@@ -4,6 +4,7 @@ use App\Http\Controllers\BusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TripController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('locations',LocationController::class);
     Route::resource('buses',BusController::class);
+    Route::resource('trips',TripController::class);
 
 });
 require __DIR__.'/auth.php';

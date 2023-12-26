@@ -15,7 +15,7 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips = Trip::get();
+        $trips = Trip::with('departureLocation', 'apartureLocation', 'bus')->get();
         return view('dashboard.pages.trips.index', compact('trips'));
     }
 

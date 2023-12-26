@@ -35,7 +35,7 @@
 
                 <input type="number" class="form-control mb-3" name="seat_number" placeholder="Seat Number">
 
-                @error('number')
+                @error('seat_number')
                     <p>{{$message}}</p>
                 @enderror
 

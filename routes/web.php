@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TripController;
+use App\Http\Controllers\UserTripController;
+use App\Models\Location;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $locations = Location::get();
+    return view('index', compact('locations'));
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -32,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/admin', [DashboardController::class, 'home'])->name('dashboard');
+    Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
 
     Route::resource('locations',LocationController::class);
     Route::resource('buses',BusController::class);
@@ -41,4 +45,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-
+Route::get('search/trips', [UserTripController::class, 'search'])->name('search.trips');
+Route::get('select/trip/{id}', [UserTripController::class, 'selectTrip'])->name('select.trip');
+Route::post('store/user/trip',[UserTripController::class, 'storeTrip'])->name('store.user_trip');

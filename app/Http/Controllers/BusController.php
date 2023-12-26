@@ -34,7 +34,8 @@ class BusController extends Controller
             'name' => $request->name,
             'quality' => $request->quality,
             'class' => $request->class,
-            'seat_number' => $request->seat_number
+            'seat_number' => $request->seat_number,
+            'available_seat' =>$request->seat_number
         ]);
         return redirect()->route('buses.index');
     }

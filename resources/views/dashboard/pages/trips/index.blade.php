@@ -24,10 +24,11 @@
             <tr>
             <th scope="row">{{$trip->id}}</th>
             <td>{{$trip->departure_at}}</td>
-            <td>{{$trip->departure_location_id}}</td>
-            <td>{{$trip->apertaure_location_id}}</td>
-            <td>{{$trip->bus_id}}</td>
+            <td>{{$trip->departureLocation->name}}</td>
+            <td>{{$trip->apartureLocation->name}}</td> 
+            <td>{{$trip->bus->name}}</td>
             <td>{{$trip->fare}}</td>
+
             <td>
                 <div class="btn-group">
                     <a href="{{route('trips.edit', $trip->id)}}" class="btn btn-sm btn-warning">Edit</a>

@@ -11,7 +11,7 @@
 
     <div class="container">
         <div class="row">
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{url('/')}}">Logo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,41 +51,57 @@
     </div>
 
     <div class="container">
-      
-      <form action="{{route('search.trips')}}">
-        
-        <div class="row align-items-center" style="min-height: 80vh;">
-          <div class="col-md-6">
-          <h1>Make a trip</h1>
-            <select name="departure_location_id" id="" class="form-control mb-3">
-              <option value="" disabled selected>Choose Departure Location</option>
-              @foreach($locations as $location)
-              <option value="{{$location->id}}">{{$location->name}}</option>
-              @endforeach
-            </select>
-            @error('departure_location_id')
-              <p class="text-danger">{{$message}}</p>
-            @enderror
+      <h1>Available Bus</h1>
+        <div class="row">
+            <div class="col-md-12">
+               
+                    @if(session()->has('error'))
+                    <div class="py-4 my-4">
+                        <p class="alert bg-danger">{{session('error')}}</p>
+                    </div>
+                    @endif
 
-            <select name="apertaure_location_id" id="" class="form-control mb-3">
-              <option value="" disabled selected>Choose Aparture Location</option>
-              @foreach($locations as $location)
-              <option value="{{$location->id}}">{{$location->name}}</option>
-              @endforeach
-            </select>
-            @error('apertaure_location_id')
-              <p class="text-danger">{{$message}}</p>
-            @enderror
+               
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Departure At</th>
+                <th scope="col">Bus</th>
+                <th scope="col">Available Seat</th>
+                <th scope="col">class</th>
+                <th scope="col">Quality</th>
+                <th scope="col">Fare</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($trips as $trip)
+                <tr>
+                    <td>{{$trip->departure_at}}</td>
+                    
+                    <td>{{$trip->bus->name}}</td>
+                    <td>{{$trip->bus->available_seat}} ({{$trip->bus->seat_number}})</td>
+                    <td>{{$trip->bus->class}}</td>
+                    <td>{{$trip->bus->quality}}</td>
+                    <td>{{$trip->fare}}</td>
+                    <td>
+                        <a href="{{route('select.trip', $trip->id)}}" class="btn btn-warning btn-sm">Choose</a>
+                    </td>
+                </tr>
 
-            <input type="date" name="departure_date" class="form-control mb-3">
-            @error('departure_date')
-              <p class="text-danger">{{$message}}</p>
-            @enderror
+                @empty
 
-            <input type="submit" class="btn btn-primary" value="Submit">
-          </div>
+                <tr>
+                    <td colspan="6" class="text-danger text-center">No Available bus</td>
+                </tr>
+
+                @endforelse
+            
+             
+            </tbody>
+            </table>
+            </div>
         </div>
-      </form>
     </div>
 
 

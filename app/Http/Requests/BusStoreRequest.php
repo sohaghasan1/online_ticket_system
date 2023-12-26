@@ -24,7 +24,7 @@ class BusStoreRequest extends FormRequest
         return [
             'name' => 'required',
             'quality' => 'required|in:AC,Non AC',
-            'class' => 'required|in:Business, Economy',
+            'class' => 'required|in:Business,Economy',
             'seat_number' => 'required|integer|between:28,36',
         ];
     }

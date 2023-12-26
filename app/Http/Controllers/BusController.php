@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BusStoreRequest;
 use App\Models\Bus;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,15 @@ class BusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BusStoreRequest $request)
     {
-        
+        Bus::create([
+            'name' => $request->name,
+            'quality' => $request->quality,
+            'class' => $request->class,
+            'seat_number' => $request->seat_number
+        ]);
+        return redirect()->route('buses.index');
     }
 
     /**

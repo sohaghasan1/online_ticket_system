@@ -22,7 +22,7 @@
             <td>{{$location->name}}</td>
             <td>
                 <div class="btn-group">
-                    <a href="" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{route('locations.edit', $location->id)}}" class="btn btn-sm btn-warning">Edit</a>
                     <a href="" class="btn btn-sm btn-danger">Delete</a>
                 </div>
             </td>

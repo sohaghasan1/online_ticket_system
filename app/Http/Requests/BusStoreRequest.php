@@ -11,7 +11,7 @@ class BusStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class BusStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'quality' => 'required|in:AC,Non AC',
+            'class' => 'required|in:Business, Economy',
+            'seat_number' => 'required|integer|between:28,36',
         ];
     }
 }

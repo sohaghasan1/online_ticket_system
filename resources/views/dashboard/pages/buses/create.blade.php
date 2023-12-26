@@ -13,11 +13,6 @@
                     <p>{{$message}}</p>
                 @enderror
 
-                <input type="text" placeholder="Bus " name="name" class="form-control mb-3">
-                @error('name')
-                    <p>{{$message}}</p>
-                @enderror
-
                 <select name="quality" class="form-control mb-3" id="">
                     <option value="" disabled selected>Select Bus Quality</option>
                     <option value="AC">AC</option>

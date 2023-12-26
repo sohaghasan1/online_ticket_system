@@ -32,12 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [DashboardController::class, 'home'])->name('dashboard');
 
-    // Route::resource('locations',LocationController::class);
-
-    Route::resources([
-        'locations',LocationController::class,
-        'buses',BusController::class,
-    ]);
+    Route::resource('locations',LocationController::class);
+    Route::resource('buses',BusController::class);
 
 });
 require __DIR__.'/auth.php';

@@ -54,7 +54,7 @@
                     <p>{{$message}}</p>
                 @enderror
 
-                <input type="submit" value="Add Trip">
+                <input type="submit" class="btn btn-info" value="Add Trip">
             </form>
 
         </div>

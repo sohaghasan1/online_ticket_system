@@ -47,7 +47,8 @@ class LocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $location = Location::where('id',$id)->first();
+        return view('dashboard.pages.locations.edit', compact('location'));
     }
 
     /**
@@ -55,7 +56,15 @@ class LocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string'
+        ]);
+        Location::where('id', $id)->update(
+            [
+                'name' => $request->name,
+            ]
+        );
+        return redirect()->route('locations.index')->with('success', "Location Updated");
     }
 
     /**
@@ -63,6 +72,10 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      $location = Location::find($id);
+      $location->delete();
+        return redirect()->route('locations.index')->with('success', "Location Deleted");
     }
+
+   
 }

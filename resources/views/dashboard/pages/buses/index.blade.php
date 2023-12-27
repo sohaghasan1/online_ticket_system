@@ -7,7 +7,7 @@
         <div>
         <a href="{{route('buses.create')}}" class="btn btn-primary">Add Bus</a>
         </div>
-        <table class="table">
+        <table class="table mt-3">
         <thead>
             <tr>
             <th scope="col">#</th>

@@ -7,7 +7,7 @@
         <div>
         <a href="{{route('trips.create')}}" class="btn btn-primary">Add a new Trip</a>
         </div>
-        <table class="table">
+        <table class="table mt-3">
         <thead>
             <tr>
             <th scope="col">#</th>

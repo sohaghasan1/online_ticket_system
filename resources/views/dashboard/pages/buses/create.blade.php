@@ -41,7 +41,7 @@
 
 
 
-                <input type="submit" value="Add Bus">
+                <input type="submit" class="btn btn-info" value="Add Bus">
             </form>
 
         </div>
